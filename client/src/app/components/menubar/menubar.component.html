@@ -1,0 +1,12 @@
+<div *ngIf="isLoggedIn()===true;else login">
+    <p-menubar [model]="items" styleClass="fixed top-0 z-4 w-full">
+        <a pButton label="Log Out" icon="pi pi-power-off" (click)="isLogOut()"></a>
+
+    </p-menubar>
+</div>
+<ng-template #login>
+    <p-menubar>
+        <a pButton label="Login" icon="pi pi-power-off"></a>
+    </p-menubar>
+
+</ng-template>

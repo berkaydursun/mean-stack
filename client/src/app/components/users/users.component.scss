@@ -1,0 +1,24 @@
+ $primaryColor:var(--primary-color);
+ $secondaryColor:#607D8B;
+
+
+a{
+    text-decoration: none;
+    color: #ffffff;
+    background-color: $secondaryColor;
+    padding: 0.6rem;
+    border-radius: 4px;
+}
+
+td,th{
+    text-align: center!important;
+}
+
+.lt-spacing{
+    letter-spacing: 2px;
+}
+
+.p-button-secondary:hover{
+    background-color: cadetblue;
+    transition: 0.1s ease-in;
+}

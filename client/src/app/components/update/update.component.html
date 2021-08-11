@@ -1,0 +1,44 @@
+<div class="container ">
+    <form (ngSubmit)="onSubmit()" [formGroup]="updateForm" class="m-6">
+        <h3 class="text-center mb-4">Update Panel</h3>
+        <div class="field">
+
+            <input id="name" [ngModel]="user.username" type="text" class="inputfield block w-full" pInputText
+                formControlName="usernameValue">
+            <div *ngIf="!updateForm.controls.usernameValue?.valid && updateForm.controls.usernameValue.touched">
+                <p class="text-pink-700">Username is not valid</p>
+            </div>
+        </div>
+
+        <div class="field">
+
+            <input id="name" [ngModel]="user.firstname" type="text" class="inputfield block w-full" pInputText
+                formControlName="firstnameValue">
+            <div *ngIf="!updateForm.controls.firstnameValue?.valid && updateForm.controls.firstnameValue.touched">
+                <p class="text-pink-700">First Name is not valid</p>
+            </div>
+        </div>
+
+        <div class="field">
+
+            <input id="name" [ngModel]="user.lastname" type="text" class="inputfield block w-full" pInputText
+                formControlName="lastnameValue">
+            <div *ngIf="!updateForm.controls.lastnameValue?.valid && updateForm.controls.lastnameValue.touched">
+                <p class="text-pink-700">Last Name is not valid</p>
+            </div>
+        </div>
+
+        <div class="field">
+
+            <input id="name" [ngModel]="user.password" type="text" class="inputfield block w-full" pInputText
+                formControlName="passwordValue">
+            <div *ngIf="!updateForm.controls.passwordValue?.valid && updateForm.controls.passwordValue.touched">
+                <p class="text-pink-700">Password is not valid</p>
+            </div>
+        </div>
+
+
+        <button pButton type="submit" label="Update" [disabled]="!updateForm.valid"
+            class="p-button-secondary w-full"></button>
+    </form>
+</div>

@@ -1,0 +1,19 @@
+<div class="container text-center">
+{{ user | json }}
+    <div *ngIf="user$ | async as user; else userNull" class="grid flex-column border-solid border-round border-primary mt-4 p-4 align-items-center">
+        <h3 class="mb-4">User Information</h3>
+        <div class="col-md-3"><img [src]='user.avatar' class="text-center" width="200" height="200"></div>
+        <div class="col-md-3">
+            <p class="font-bold text-lg mt-3">{{user.firstname}} &nbsp; {{user.lastname}}</p>
+        </div>
+        <div class="col-md-3 m-2">
+            <p>{{user.username}}</p>
+        </div>
+    </div>
+    <ng-template #userNull>
+        <h5>Loading</h5>
+        <p-progressSpinner></p-progressSpinner>
+
+    </ng-template>
+
+</div>

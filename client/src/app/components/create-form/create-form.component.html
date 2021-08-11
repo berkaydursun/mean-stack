@@ -1,0 +1,48 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="createUserForm" class="m-6">
+        <h3 class="text-center mb-4">Create User Panel</h3>
+
+        <div class="field">
+            <input id="name" placeholder="Enter User Name" type="text" class="inputfield block w-full" pInputText
+                formControlName="usernameValue" name="username" required>
+            <div *ngIf="!createUserForm.controls.nameValue?.valid && createUserForm.controls.nameValue?.touched">
+                <p class="text-pink-700">Username not valid</p>
+            </div>
+        </div>
+        <div class="field">
+            <input id="name" placeholder="Enter First Name" type="text" class="inputfield block w-full" pInputText
+                formControlName="firstnameValue" name="firstname" required>
+            <div
+                *ngIf="!createUserForm.controls.firstnameValue?.valid && createUserForm.controls.firstnameValue?.touched">
+                <p class="text-pink-700">First Name not valid</p>
+            </div>
+        </div>
+        <div class="field">
+            <input id="name" placeholder="Enter Last Name" type="text" class="inputfield block w-full" pInputText
+                formControlName="lastnameValue" name="lastname" required>
+            <div
+                *ngIf="!createUserForm.controls.lastnameValue?.valid && createUserForm.controls.lastnameValue?.touched">
+                <p class="text-pink-700">Last Name not valid</p>
+            </div>
+        </div>
+        <div class="field">
+            <input id="name" placeholder="Enter Avatar URL" name="avatar" type="text" class="inputfield block w-full"
+                pInputText formControlName="avatarValue">
+            <div *ngIf="!createUserForm.controls.avatarValue?.valid && createUserForm.controls.avatarValue?.touched">
+                <p class="text-pink-700">Avatar not valid</p>
+            </div>
+        </div>
+
+        <div class="job">
+            <input id="" placeholder="Enter Password" type="password" name="password" class="inputfield block w-full"
+                pInputText formControlName="passwordValue">
+            <div
+                *ngIf="!createUserForm.controls.passwordValue?.valid && createUserForm.controls.passwordValue?.touched">
+                <p class="text-pink-700">Password not valid</p>
+            </div>
+        </div>
+        <button pButton type="submit" [disabled]="!createUserForm.valid" label="Create User"
+            class="p-button-secondary w-full mt-4"></button>
+
+    </form>
+</div>

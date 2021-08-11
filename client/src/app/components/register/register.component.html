@@ -1,0 +1,23 @@
+<div class="container ">
+    <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="m-6">
+        <h3 class="text-center mb-4">Register Panel</h3>
+        <div class="field">
+            <input id="username" placeholder="Enter Username" type="text" class="inputfield block w-full" pInputText
+                formControlName="usernameValue" name="username">
+            <div *ngIf="!registerForm.controls.usernameValue?.valid && registerForm.controls.usernameValue.touched">
+                <p class="text-pink-700"> Username is not valid</p>
+            </div>
+        </div>
+
+        <div class="field">
+            <input id="password" placeholder="Enter Password" name="password" type="password"
+                formControlName="passwordValue" class="inputfield block w-full" pInputText />
+            <div *ngIf="!registerForm.controls.passwordValue?.valid && registerForm.controls.passwordValue.touched">
+                <p class="text-pink-700">Password not valid</p>
+            </div>
+        </div>
+
+        <button pButton type="submit" label="Register" [disabled]="!registerForm.valid"
+            class="p-button-secondary w-full"></button>
+    </form>
+</div>

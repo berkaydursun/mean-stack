@@ -1,0 +1,21 @@
+<div class="container">
+
+    <div *ngIf="user!==null; else noUser"
+        class="grid flex-column border-solid border-round border-primary mt-4 p-4 align-items-center">
+        <h3 class="mb-4">Personal Information</h3>
+        <div class="col-md-3 m-2 "><img [src]="myProfileInfo.avatarURL" width="128" height="128"></div>
+        <div class="col-md-3">
+            <p class="font-bold text-lg mt-3">{{myProfileInfo.name}} &nbsp; {{myProfileInfo.surname}}</p>
+        </div>
+        <div class="col-md-3 m-2">
+            <p>{{myProfileInfo.email}}</p>
+        </div>
+
+    </div>
+    <ng-template #noUser>
+        <h5>Loading</h5>
+        <p-progressSpinner></p-progressSpinner>
+
+    </ng-template>
+
+</div>

@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h4 class="modal-title">Please Confirm</h4>
+  <button type="button" class="btn btn-black" aria-label="Close" (click)="dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  Do you really want to do ?
+</div>  
+<div class="modal-footer">
+  <button type="button" pButton class="p-button-danger mr-3" (click)="decline()">{{ btnCancelText }}</button>
+  <button type="button" pButton class="p-button-secondary" (click)="accept()">{{ btnOkText }}</button>
+</div>

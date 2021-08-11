@@ -1,0 +1,24 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="m-6">
+    <h3 class="text-center">Login Panel</h3>
+    <div class="container ">
+        <div class="field">
+
+            <input id="email" placeholder="Enter Username" type="username" class="inputfield block w-full" pInputText
+                formControlName="usernameValue" name="username">
+            <div *ngIf="!loginForm.controls.emailValue?.valid && loginForm.controls.nameValue?.touched">
+                <p class="text-pink-700">Username not valid</p>
+            </div>
+        </div>
+
+        <div class="field">
+
+            <input id="password" placeholder="Enter Password" type="password" formControlName="passwordValue"
+                class="inputfield block w-full" pInputText name="password" />
+            <div *ngIf="!loginForm.controls.passwordValue?.valid && loginForm.controls.passwordValue?.touched">
+                <p class="text-pink-700">Password not valid</p>
+            </div>
+        </div>
+
+        <button pButton type="submit" label="Login" class="p-button-secondary w-full"></button>
+    </div>
+</form>

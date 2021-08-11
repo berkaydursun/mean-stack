@@ -1,0 +1,30 @@
+<p-table [value]="users">
+    <ng-template *ngIf="users!==null; else usersNotFound" pTemplate="caption">
+        <div class="p-d-flex p-ai-center p-jc-between text-center lt-spacing">
+            USERS
+        </div>
+    </ng-template>
+    <ng-template #usersNotFound>
+        <h3>Loading</h3>
+        <p-progressSpinner></p-progressSpinner>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>ID</th>
+            <th>E-Mail</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Avatar</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-users>
+        <tr>
+
+            <td>{{users.id}}</td>
+            <td>{{users.email}}</td>
+            <td>{{users.first_name}}</td>
+            <td>{{users.last_name}}</td>
+            <td><img [src]="users.avatar"></td>
+        </tr>
+    </ng-template>
+</p-table>
