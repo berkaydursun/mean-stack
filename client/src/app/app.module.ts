@@ -22,7 +22,7 @@ import { UpdateComponent } from './components/update/update.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserDelayComponent } from './components/user-delay/user-delay.component';
-import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 
 @NgModule({
@@ -54,8 +54,8 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     HttpClientModule,
     NgbModule,
     ProgressSpinnerModule
-    
-    
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators, ValidationErrors } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertifyService } from 'src/app/services/alertify.service';
 import { ConfirmationDialogService } from 'src/app/services/confirmation-dialog.service';
 import { UserService } from 'src/app/services/user.service';
@@ -20,7 +21,7 @@ export class CreateFormComponent {
     passwordValue: new FormControl('', Validators.required)
   })
 
-  constructor(private confirmationDialogService: ConfirmationDialogService, private userService: UserService, private alertifyService: AlertifyService) { }
+  constructor(private confirmationDialogService: ConfirmationDialogService, private userService: UserService, private alertifyService: AlertifyService,private router:Router) { }
 
   // Getting data from from and create user
   onSubmit() {
@@ -30,6 +31,7 @@ export class CreateFormComponent {
           this.userService.createUser(this.createUserForm.value.usernameValue, this.createUserForm.value.firstnameValue,this.createUserForm.value.lastnameValue,this.createUserForm.value.avatarValue || "",this.createUserForm.value.passwordValue)
             .subscribe(data => {
               this.alertifyService.success('User Created Successfully');
+              this.router.navigateByUrl('/users');
             },
               error => {
                 error ? this.alertifyService.alert(error.error.error + ' Error Status Code : ' + error.status) : false

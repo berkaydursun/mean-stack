@@ -19,7 +19,7 @@
     <ng-template pTemplate="body" let-users>
         <tr>
 
-            <td>{{users._id}}</td>
+            <td>{{users._id.substring(0,8)}}</td>
             <td>{{users.username}}</td>
             <td>{{users.firstname}}&nbsp;{{users.lastname}}</td>
             <td><img [src]="users.avatar" width="100" height="100"></td>

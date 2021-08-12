@@ -21,11 +21,5 @@ export class UserDetailComponent {
 
   showUser() {
     return this.userService.getSingleUser(this.activatedRoute.snapshot.paramMap.get('id'));
-      // .subscribe(data => {
-      //   this.user = data;
-      // },
-      //   error => {
-      //     error ? this.alertifyService.alert(error.error.error + ' Error Status Code : ' + error.status) : false
-      //   });
   }
 }

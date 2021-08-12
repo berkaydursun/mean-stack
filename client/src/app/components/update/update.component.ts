@@ -26,11 +26,10 @@ export class UpdateComponent {
 
   // Getting data from form and if datas' valid user updated.
   onSubmit() {
-
-
-    this.userService.updateUser(this.updateForm.value.usernameValue, this.updateForm.value.firstnameValue,this.updateForm.value.lastnameValue,this.updateForm.value.passwordValue, this.activatedRoute.snapshot.paramMap.get('id'))
+    this.userService.updateUser(this.updateForm.value.usernameValue, this.updateForm.value.firstnameValue, this.updateForm.value.lastnameValue, this.updateForm.value.passwordValue, this.activatedRoute.snapshot.paramMap.get('id'))
       .subscribe(data => {
         this.alertifyService.success("User Updated Successfully");
+        this.router.navigateByUrl('/users');
       },
         error => {
           error ? this.alertifyService.alert(error.error.error + ' Error Status Code : ' + error.status) : false

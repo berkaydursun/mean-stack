@@ -2,8 +2,7 @@ const User = require('../model/User');
 const Admin = require('../model/Admin');
 
 const {
-    v1: uuidv1,
-    v4: uuidv4,
+    v4: uuidv4
 } = require('uuid');
 
 const jwt = require('jsonwebtoken');
@@ -11,18 +10,26 @@ const secretKey = require('crypto').randomBytes(64).toString('hex');
 
 
 exports.addUser = (req, res) => {
-    console.log(req.body);
-    const user = new User({
-        _id: uuidv4(),
-        username: req.body.username,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        avatar: req.body.avatar,
-        password: req.body.password
-    })
-    user.save()
-        .then((result) => { res.status(201).json(result) })
-        .catch((err) => console.log(err))
+
+    User.findOne({ username: req.body.username })
+        .then(result => {
+            if (result == null) {
+                const user = new User({
+                    _id: uuidv4(),
+                    username: req.body.username,
+                    firstname: req.body.firstname,
+                    lastname: req.body.lastname,
+                    avatar: req.body.avatar,
+                    password: req.body.password
+                })
+                user.save()
+                    .then((result) => { res.status(201).json(result) })
+                    .catch((err) => console.log(err))
+            } else {
+                res.status(403).json('Please Enter Different Username ')
+            }
+        })
+
 }
 
 exports.getUsers = (req, res) => {
@@ -87,13 +94,23 @@ exports.login = (req, res) => {
 }
 
 exports.createAdmin = (req, res) => {
-    const admin = new Admin({
-        _id: uuidv4(),
-        username: req.body.username,
-        password: req.body.password
+    Admin.findOne({ username: req.body.username })
+        .then(result => {
+            if (result == null) {
+                const admin = new Admin({
+                    _id: uuidv4(),
+                    username: req.body.username,
+                    password: req.body.password
 
-    })
-    admin.save()
-        .then((result) => { res.status(200).json(result) })
-        .catch((err) => console.log(err))
+                })
+                admin.save()
+                    .then((result) => { res.status(200).json(result) })
+                    .catch((err) => console.log(err))
+
+            }
+            else {
+                res.status(403).json('Please Enter Different Username');
+            }
+
+        })
 }

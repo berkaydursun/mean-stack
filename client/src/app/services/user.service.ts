@@ -11,11 +11,11 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   // That's The Api Path That I Use.
-  path = 'https://reqres.in/api/users';
+  path = 'http://localhost:3000';
 
   // Getting All Users Data From Api  
   getUsers() {
-    return this.http.get<User[]>('http://localhost:3000/api/v1/user').
+    return this.http.get<User[]>(this.path+'/api/v1/user').
       pipe(
         map((data: any) => {
           return data
@@ -27,7 +27,7 @@ export class UserService {
 
   // Getting Single User Data According to User ID 
   getSingleUser(id: any) {
-    return this.http.get<User>('http://localhost:3000/api/v1/user'+ `/${id}`)
+    return this.http.get<User>(this.path+'/api/v1/user'+ `/${id}`)
       .pipe(
         map((data: any) => {
           return data;
@@ -54,7 +54,7 @@ export class UserService {
 
     }
 
-    return this.http.post<any>('http://localhost:3000/api/v1/user', postData, httpOptions).pipe(
+    return this.http.post<any>(this.path+'/api/v1/user', postData, httpOptions).pipe(
       tap(data => {
         return data;
       })
@@ -64,7 +64,7 @@ export class UserService {
 
   // Delete User Data According to User ID
   deleteUser(id: any) {
-    return this.http.delete<User>('http://localhost:3000/api/v1/user' + `/${id}`).pipe(
+    return this.http.delete<User>(this.path+'/api/v1/user' + `/${id}`).pipe(
       tap(data => {
         return data;
       })
@@ -82,7 +82,7 @@ export class UserService {
       "username": username,
       "password": password
     }
-    return this.http.post<String>('http://localhost:3000/api/v1/register', postData, httpOptions).pipe(
+    return this.http.post<String>(this.path+'/api/v1/register', postData, httpOptions).pipe(
       tap(data => {
         console.log(data);
       }));
@@ -92,7 +92,7 @@ export class UserService {
   updateUser(username: String, firstname: String, lastname: String,password:String,_id:any): Observable<String> {
     const body = { "username": username, "firstname": firstname,"lastname":lastname,"password":password };
 
-    return this.http.put<any>('http://localhost:3000/api/v1/user' + `/${_id}`, body).pipe(
+    return this.http.put<any>(this.path+'/api/v1/user' + `/${_id}`, body).pipe(
       tap(data => {
         console.log(data)
       }));

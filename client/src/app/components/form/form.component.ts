@@ -30,7 +30,6 @@ export class FormComponent {
   onSubmit() {
     this.loginService.loginRequest(this.loginForm.value.usernameValue, this.loginForm.value.passwordValue)
       .subscribe(data => {
-        console.log(data);
         this.alertifyService.success("Welcome ! ");
       },
         error => {
